@@ -27,6 +27,12 @@ N-Gram models are statistical language models that assign probability to the lik
 
 <img width="986" alt="image" src="https://github.com/user-attachments/assets/07840040-ed92-4af6-8ebb-0e88bfec803e" />
 
+### Other issues
+
+What happens if we want to predict a word that is not in the corpus? Naturally, these will have 0 probabilities, however we also know that 0 istypically not a resonable answer - thus there are some techniques.
+
+- Constants: Constants can be added such that no word will ever result in a 0 probability. Such constants can be Formula: P(w_i) = (count(w_i) + 1) / (N + V)
+- Backoff: If using a higher order N-Gram such as Bi,Tri. Can back off to a uni-gram.
 
 ## Evaluation: Perplexity
 
