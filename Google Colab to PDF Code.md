@@ -1,6 +1,4 @@
-# Converting a Colab Notebook to PDF
-
-## Method 1: Using Terminal or Code Cell
+# Best method to convert a Colab Notebook to PDF
 
 1. First, save the notebook to your working directory
 2. Download notebook then reupload
