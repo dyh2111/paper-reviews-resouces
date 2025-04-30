@@ -1,4 +1,4 @@
-#I-JEPA:Self-Supervised Learning from Images with a Joint-Embedding Predictive Architecture
+# I-JEPA:Self-Supervised Learning from Images with a Joint-Embedding Predictive Architecture
 
 📄 Paper Link
 
