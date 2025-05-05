@@ -7,6 +7,7 @@
    sudo apt-get update
    sudo apt-get install texlive-xetex
    sudo apt-get install pandoc
+   pip install nbconvert
    ```
       Or in a code cell:
 
@@ -14,16 +15,9 @@
    !sudo apt-get update
    !sudo apt-get install texlive-xetex
    !sudo apt-get install pandoc
-   ```
-5. Install nbconvert (if not already installed):
-   ```bash
-   pip install nbconvert
-   ```
-   Or in a code cell:
-   ```python
    !pip install nbconvert
    ```
-6. Convert the notebook to PDF:
+4. Convert the notebook to PDF:
    ```bash
    jupyter nbconvert --to pdf your_notebook.ipynb
    ```
