@@ -7,7 +7,28 @@ Jacob Devlin, Ming-Wei Chang, Kenton Lee, Kristina Toutanova
 https://arxiv.org/abs/1810.04805
 
 ## Overview
-BERT (Bidirectional Encoder Representations from Transformers) is an innovative language representation model designed to pre-train deep bidirectional representations by jointly conditioning on both left and right context in all layers. This bidirectional approach differentiates BERT from previous models, enabling state-of-the-art performance across various NLP tasks with minimal task-specific architecture modifications.
+**BERT (Bidirectional Encoder Representations from Transformers)** builds directly on the Transformer architecture.  
+The original Transformer (Vaswani et al., 2017) uses an encoder–decoder architecture for sequence-to-sequence tasks.  
+
+BERT modifies this by using only the encoder and introducing a bidirectional pretraining objective.  
+
+### Input Representation
+For each token, the input embedding is the sum of:
+- **Token Embedding** (from WordPiece tokenization)  
+- **Segment Embedding** (sentence A vs sentence B)  
+- **Position Embedding** (index of the token within the sequence)  
+
+These combined embeddings are fed into the Transformer encoder layers.  
+
+### Training Objectives
+- A **softmax head** is added during pretraining:  
+  - **Masked Language Modeling (MLM):** predict masked tokens using left + right context.  
+  - **Next Sentence Prediction (NSP):** predict whether sentence B follows sentence A.  
+
+### Fine-Tuning for Tasks
+- In downstream tasks, the pretraining heads are replaced with a **task-specific classifier head**.  
+- The pretrained encoder layers are typically fine-tuned (sometimes partially frozen) to adapt to the new task.  
+
 
 ## Key Achievements
 - Established new state-of-the-art results on eleven NLP tasks
