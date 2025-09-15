@@ -1,0 +1,36 @@
+# Foundational Papers
+
+## GPT1: Improving Language Understanding by Generative Pre-Training
+
+**Authors:**  
+Alec Radford (OpenAI, alec@openai.com)  
+Karthik Narasimhan (OpenAI, karthikn@openai.com)  
+Tim Salimans (OpenAI, tim@openai.com)  
+Ilya Sutskever (OpenAI)
+
+---
+
+# Overview
+
+GPT (Generative Pretrained Transformer) built on the original Transformer, but instead of using the full encoder–decoder model, it kept only the decoder block.  
+Input embeddings consisted of the tokenized words plus positional encodings to preserve order.  
+
+The training objective was next token prediction. This enabled unsupervised pretraining directly from raw text, since the model simply learned to predict the next word based on all previous words.  
+
+GPT’s attention was **unidirectional (causal masking)**, so each token could only attend to tokens before it in the sequence.  
+
+GPT was unique at the time because it was trained on a **much larger dataset** than most prior work, showing that scale in both data and model size directly improved performance.  
+
+---
+
+# Key Contributions
+- **Decoder-only architecture**: simplified from the original Transformer.  
+- **Unsupervised pretraining**: next word prediction as a scalable objective.  
+- **Transfer learning for NLP**: fine-tuning the pretrained model on downstream tasks showed strong results compared to training from scratch.  
+- **Scalability**: demonstrated that larger models trained on more data achieve better generalization.  
+
+---
+
+# Legacy
+GPT introduced the idea of **large-scale language model pretraining + fine-tuning**, which became the foundation for GPT-2, GPT-3, and beyond.  
+It marked the turning point where **scaling models and data** became the dominant strategy in NLP.  
