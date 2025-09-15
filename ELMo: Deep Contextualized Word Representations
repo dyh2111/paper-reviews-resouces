@@ -1,0 +1,47 @@
+# Foundational Papers
+
+## ELMo: Deep Contextualized Word Representations  
+**Authors:** Matthew E. Peters, Mark Neumann, Mohit Iyyer, Matt Gardner, Christopher Clark, Kenton Lee, Luke Zettlemoyer  
+**Paper:** [arXiv:1802.05365](https://arxiv.org/abs/1802.05365)
+
+---
+
+### Background
+- Prior to ELMo, NLP techniques largely relied on static embeddings (e.g., word2vec).  
+- A static embedding is essentially a tokenized word mapped to a fixed vector, typically through a simple lookup.  
+- Limitation: static embeddings cannot differentiate between word senses (e.g., bank in “river bank” vs. bank in “bank robber”).
+
+---
+
+### Key Contributions of ELMo
+- Introduced contextual embeddings by using the hidden states of a model rather than fixed lookup vectors.  
+- Each token embedding incorporates bidirectional context thanks to biLSTMs  
+- This allows words to have different representations depending on surrounding words.
+
+---
+
+### Why It’s Foundational
+- Showed that contextual representations significantly improve downstream NLP tasks.  
+- Inspired subsequent transformer-based models such as BERT  
+- Marked a shift toward pretrained language models as general-purpose feature extractors (similar to how ImageNet pretraining impacted vision).
+
+---
+
+### Model & Training
+- **Architecture:** 2-layer bidirectional LSTM.  
+- **Pretraining Corpus:** 1 Billion Word Benchmark.  
+- **Objective:** Next-word prediction (forward and backward language modeling).  
+
+---
+
+### Usage
+- **With Softmax Head:** Standard language model for next-token prediction.  
+- **Without Softmax Head:** Use hidden state outputs as contextual embeddings which can then be fed into other models for downstream tasks.  
+
+---
+
+### Summary
+ELMo demonstrated that deep contextualized word representations:
+1. Capture the meaning of words in context.  
+2. Can be transferred across tasks via pretraining and fine-tuning.  
+3. Paved the way for transformer-based architectures that dominate modern NLP.
