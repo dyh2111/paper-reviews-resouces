@@ -7,23 +7,33 @@ Jacob Devlin, Ming-Wei Chang, Kenton Lee, Kristina Toutanova
 https://arxiv.org/abs/1810.04805
 
 ## Overview
-**BERT (Bidirectional Encoder Representations from Transformers)** builds directly on the Transformer architecture.  
-The original Transformer (Vaswani et al., 2017) uses an encoder–decoder architecture for sequence-to-sequence tasks.  
+BERT (Bidirectional Encoder Representations from Transformers) is built on top of the Transformer architecture.  
+The original Transformer (Attention Is All You Need, 2017) uses an encoder–decoder structure for sequence-to-sequence tasks.  
+In contrast, BERT keeps **only the encoder** and introduces a bidirectional pretraining objective.  
 
-BERT modifies this by using only the encoder and introducing a bidirectional pretraining objective.  
+BERT takes input tokens that are represented as the sum of:
+- **Token embeddings** (WordPiece vocabulary)  
+- **Segment embeddings** (whether the token belongs to sentence A or B)  
+- **Position embeddings** (index of the token in the sequence)  
 
-### Input Representation
-For each token, the input embedding is the sum of:
-- **Token Embedding** (from WordPiece tokenization)  
-- **Segment Embedding** (sentence A vs sentence B)  
-- **Position Embedding** (index of the token within the sequence)  
+This combined embedding is fed into the Transformer encoder stack.  
+During pretraining, a softmax classification layer is added on top of the hidden states to perform:
+- **Masked Language Modeling (MLM):** predict randomly masked tokens.  
+- **Next Sentence Prediction (NSP):** classify if sentence B follows sentence A.  
 
-These combined embeddings are fed into the Transformer encoder layers.  
+For downstream tasks, the pretraining heads are replaced with task-specific output layers (e.g., classification, tagging, QA).  
+The encoder weights can be fine-tuned end-to-end, or partially frozen depending on the use case.  
 
-### Training Objectives
-- A **softmax head** is added during pretraining:  
-  - **Masked Language Modeling (MLM):** predict masked tokens using left + right context.  
-  - **Next Sentence Prediction (NSP):** predict whether sentence B follows sentence A.  
+
+## Key Differences Between BERT and GPT
+- **Architecture**  
+  - GPT uses the Transformer **decoder only**.  
+  - BERT uses the Transformer **encoder only**.  
+
+- **Training Objective / Directionality**  
+  - GPT is **unidirectional**, trained with left-to-right language modeling.  
+  - BERT is **bidirectional**, trained with masking so tokens attend to both left and right context.  
+
 
 ### Fine-Tuning for Tasks
 - In downstream tasks, the pretraining heads are replaced with a **task-specific classifier head**.  
